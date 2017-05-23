@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		EFFF57891ED49D12009E33AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFF57881ED49D12009E33AE /* AppDelegate.swift */; };
 		EFFF578B1ED49D12009E33AE /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EFFF578A1ED49D12009E33AE /* GameScene.sks */; };
-		EFFF578D1ED49D12009E33AE /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = EFFF578C1ED49D12009E33AE /* Actions.sks */; };
 		EFFF578F1ED49D12009E33AE /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFF578E1ED49D12009E33AE /* GameScene.swift */; };
 		EFFF57911ED49D12009E33AE /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFF57901ED49D12009E33AE /* GameViewController.swift */; };
 		EFFF57941ED49D12009E33AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFFF57921ED49D12009E33AE /* Main.storyboard */; };
@@ -40,7 +39,6 @@
 		EFFF57851ED49D12009E33AE /* SpaceInvader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceInvader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFFF57881ED49D12009E33AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFFF578A1ED49D12009E33AE /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
-		EFFF578C1ED49D12009E33AE /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		EFFF578E1ED49D12009E33AE /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		EFFF57901ED49D12009E33AE /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		EFFF57931ED49D12009E33AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 			children = (
 				EFFF57881ED49D12009E33AE /* AppDelegate.swift */,
 				EFFF578A1ED49D12009E33AE /* GameScene.sks */,
-				EFFF578C1ED49D12009E33AE /* Actions.sks */,
 				EFFF578E1ED49D12009E33AE /* GameScene.swift */,
 				EFFF57901ED49D12009E33AE /* GameViewController.swift */,
 				EFFF57921ED49D12009E33AE /* Main.storyboard */,
@@ -245,7 +242,6 @@
 				EFFF578B1ED49D12009E33AE /* GameScene.sks in Resources */,
 				EFFF57961ED49D12009E33AE /* Assets.xcassets in Resources */,
 				EFFF57991ED49D12009E33AE /* LaunchScreen.storyboard in Resources */,
-				EFFF578D1ED49D12009E33AE /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,6 +517,7 @@
 				EFFF57B51ED49D12009E33AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EFFF57B61ED49D12009E33AE /* Build configuration list for PBXNativeTarget "SpaceInvaderTests" */ = {
 			isa = XCConfigurationList;
@@ -529,6 +526,7 @@
 				EFFF57B81ED49D12009E33AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EFFF57B91ED49D12009E33AE /* Build configuration list for PBXNativeTarget "SpaceInvaderUITests" */ = {
 			isa = XCConfigurationList;
@@ -537,6 +535,7 @@
 				EFFF57BB1ED49D12009E33AE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

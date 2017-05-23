@@ -10,6 +10,9 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
+    var plane = SKSpriteNode()
+    
+    
     
     var leftButton: SKSpriteNode!
     var rightButton: SKSpriteNode!
@@ -19,6 +22,8 @@ class GameScene: SKScene {
     var touchingScreen = false
     
     override func didMove(to view: SKView) {
+        plane.childNode(withName: "spaceShip") as! SKSpriteNode
+        
         leftButton = SKSpriteNode(color: UIColor.red, size: CGSize(width: 50.0, height: 50.0))
         leftButton.position = CGPoint(x: 100, y: 100)
         addChild(leftButton)

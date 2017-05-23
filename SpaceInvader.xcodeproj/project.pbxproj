@@ -1,0 +1,544 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EFFF57891ED49D12009E33AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFF57881ED49D12009E33AE /* AppDelegate.swift */; };
+		EFFF578B1ED49D12009E33AE /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EFFF578A1ED49D12009E33AE /* GameScene.sks */; };
+		EFFF578D1ED49D12009E33AE /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = EFFF578C1ED49D12009E33AE /* Actions.sks */; };
+		EFFF578F1ED49D12009E33AE /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFF578E1ED49D12009E33AE /* GameScene.swift */; };
+		EFFF57911ED49D12009E33AE /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFF57901ED49D12009E33AE /* GameViewController.swift */; };
+		EFFF57941ED49D12009E33AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFFF57921ED49D12009E33AE /* Main.storyboard */; };
+		EFFF57961ED49D12009E33AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFFF57951ED49D12009E33AE /* Assets.xcassets */; };
+		EFFF57991ED49D12009E33AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFFF57971ED49D12009E33AE /* LaunchScreen.storyboard */; };
+		EFFF57A41ED49D12009E33AE /* SpaceInvaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFF57A31ED49D12009E33AE /* SpaceInvaderTests.swift */; };
+		EFFF57AF1ED49D12009E33AE /* SpaceInvaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFF57AE1ED49D12009E33AE /* SpaceInvaderUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EFFF57A01ED49D12009E33AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFFF577D1ED49D12009E33AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EFFF57841ED49D12009E33AE;
+			remoteInfo = SpaceInvader;
+		};
+		EFFF57AB1ED49D12009E33AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EFFF577D1ED49D12009E33AE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EFFF57841ED49D12009E33AE;
+			remoteInfo = SpaceInvader;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		EFFF57851ED49D12009E33AE /* SpaceInvader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceInvader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFFF57881ED49D12009E33AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EFFF578A1ED49D12009E33AE /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		EFFF578C1ED49D12009E33AE /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
+		EFFF578E1ED49D12009E33AE /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		EFFF57901ED49D12009E33AE /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		EFFF57931ED49D12009E33AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		EFFF57951ED49D12009E33AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		EFFF57981ED49D12009E33AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EFFF579A1ED49D12009E33AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFFF579F1ED49D12009E33AE /* SpaceInvaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceInvaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFFF57A31ED49D12009E33AE /* SpaceInvaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceInvaderTests.swift; sourceTree = "<group>"; };
+		EFFF57A51ED49D12009E33AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFFF57AA1ED49D12009E33AE /* SpaceInvaderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpaceInvaderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EFFF57AE1ED49D12009E33AE /* SpaceInvaderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceInvaderUITests.swift; sourceTree = "<group>"; };
+		EFFF57B01ED49D12009E33AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EFFF57821ED49D12009E33AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFFF579C1ED49D12009E33AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFFF57A71ED49D12009E33AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EFFF577C1ED49D12009E33AE = {
+			isa = PBXGroup;
+			children = (
+				EFFF57871ED49D12009E33AE /* SpaceInvader */,
+				EFFF57A21ED49D12009E33AE /* SpaceInvaderTests */,
+				EFFF57AD1ED49D12009E33AE /* SpaceInvaderUITests */,
+				EFFF57861ED49D12009E33AE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EFFF57861ED49D12009E33AE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EFFF57851ED49D12009E33AE /* SpaceInvader.app */,
+				EFFF579F1ED49D12009E33AE /* SpaceInvaderTests.xctest */,
+				EFFF57AA1ED49D12009E33AE /* SpaceInvaderUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EFFF57871ED49D12009E33AE /* SpaceInvader */ = {
+			isa = PBXGroup;
+			children = (
+				EFFF57881ED49D12009E33AE /* AppDelegate.swift */,
+				EFFF578A1ED49D12009E33AE /* GameScene.sks */,
+				EFFF578C1ED49D12009E33AE /* Actions.sks */,
+				EFFF578E1ED49D12009E33AE /* GameScene.swift */,
+				EFFF57901ED49D12009E33AE /* GameViewController.swift */,
+				EFFF57921ED49D12009E33AE /* Main.storyboard */,
+				EFFF57951ED49D12009E33AE /* Assets.xcassets */,
+				EFFF57971ED49D12009E33AE /* LaunchScreen.storyboard */,
+				EFFF579A1ED49D12009E33AE /* Info.plist */,
+			);
+			path = SpaceInvader;
+			sourceTree = "<group>";
+		};
+		EFFF57A21ED49D12009E33AE /* SpaceInvaderTests */ = {
+			isa = PBXGroup;
+			children = (
+				EFFF57A31ED49D12009E33AE /* SpaceInvaderTests.swift */,
+				EFFF57A51ED49D12009E33AE /* Info.plist */,
+			);
+			path = SpaceInvaderTests;
+			sourceTree = "<group>";
+		};
+		EFFF57AD1ED49D12009E33AE /* SpaceInvaderUITests */ = {
+			isa = PBXGroup;
+			children = (
+				EFFF57AE1ED49D12009E33AE /* SpaceInvaderUITests.swift */,
+				EFFF57B01ED49D12009E33AE /* Info.plist */,
+			);
+			path = SpaceInvaderUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EFFF57841ED49D12009E33AE /* SpaceInvader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFFF57B31ED49D12009E33AE /* Build configuration list for PBXNativeTarget "SpaceInvader" */;
+			buildPhases = (
+				EFFF57811ED49D12009E33AE /* Sources */,
+				EFFF57821ED49D12009E33AE /* Frameworks */,
+				EFFF57831ED49D12009E33AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpaceInvader;
+			productName = SpaceInvader;
+			productReference = EFFF57851ED49D12009E33AE /* SpaceInvader.app */;
+			productType = "com.apple.product-type.application";
+		};
+		EFFF579E1ED49D12009E33AE /* SpaceInvaderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFFF57B61ED49D12009E33AE /* Build configuration list for PBXNativeTarget "SpaceInvaderTests" */;
+			buildPhases = (
+				EFFF579B1ED49D12009E33AE /* Sources */,
+				EFFF579C1ED49D12009E33AE /* Frameworks */,
+				EFFF579D1ED49D12009E33AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EFFF57A11ED49D12009E33AE /* PBXTargetDependency */,
+			);
+			name = SpaceInvaderTests;
+			productName = SpaceInvaderTests;
+			productReference = EFFF579F1ED49D12009E33AE /* SpaceInvaderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EFFF57A91ED49D12009E33AE /* SpaceInvaderUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EFFF57B91ED49D12009E33AE /* Build configuration list for PBXNativeTarget "SpaceInvaderUITests" */;
+			buildPhases = (
+				EFFF57A61ED49D12009E33AE /* Sources */,
+				EFFF57A71ED49D12009E33AE /* Frameworks */,
+				EFFF57A81ED49D12009E33AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EFFF57AC1ED49D12009E33AE /* PBXTargetDependency */,
+			);
+			name = SpaceInvaderUITests;
+			productName = SpaceInvaderUITests;
+			productReference = EFFF57AA1ED49D12009E33AE /* SpaceInvaderUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EFFF577D1ED49D12009E33AE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "John Hersey High School";
+				TargetAttributes = {
+					EFFF57841ED49D12009E33AE = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+					EFFF579E1ED49D12009E33AE = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = EFFF57841ED49D12009E33AE;
+					};
+					EFFF57A91ED49D12009E33AE = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = EFFF57841ED49D12009E33AE;
+					};
+				};
+			};
+			buildConfigurationList = EFFF57801ED49D12009E33AE /* Build configuration list for PBXProject "SpaceInvader" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = EFFF577C1ED49D12009E33AE;
+			productRefGroup = EFFF57861ED49D12009E33AE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EFFF57841ED49D12009E33AE /* SpaceInvader */,
+				EFFF579E1ED49D12009E33AE /* SpaceInvaderTests */,
+				EFFF57A91ED49D12009E33AE /* SpaceInvaderUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EFFF57831ED49D12009E33AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFFF57941ED49D12009E33AE /* Main.storyboard in Resources */,
+				EFFF578B1ED49D12009E33AE /* GameScene.sks in Resources */,
+				EFFF57961ED49D12009E33AE /* Assets.xcassets in Resources */,
+				EFFF57991ED49D12009E33AE /* LaunchScreen.storyboard in Resources */,
+				EFFF578D1ED49D12009E33AE /* Actions.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFFF579D1ED49D12009E33AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFFF57A81ED49D12009E33AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EFFF57811ED49D12009E33AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFFF578F1ED49D12009E33AE /* GameScene.swift in Sources */,
+				EFFF57911ED49D12009E33AE /* GameViewController.swift in Sources */,
+				EFFF57891ED49D12009E33AE /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFFF579B1ED49D12009E33AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFFF57A41ED49D12009E33AE /* SpaceInvaderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EFFF57A61ED49D12009E33AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EFFF57AF1ED49D12009E33AE /* SpaceInvaderUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		EFFF57A11ED49D12009E33AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EFFF57841ED49D12009E33AE /* SpaceInvader */;
+			targetProxy = EFFF57A01ED49D12009E33AE /* PBXContainerItemProxy */;
+		};
+		EFFF57AC1ED49D12009E33AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EFFF57841ED49D12009E33AE /* SpaceInvader */;
+			targetProxy = EFFF57AB1ED49D12009E33AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		EFFF57921ED49D12009E33AE /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EFFF57931ED49D12009E33AE /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		EFFF57971ED49D12009E33AE /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EFFF57981ED49D12009E33AE /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EFFF57B11ED49D12009E33AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EFFF57B21ED49D12009E33AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EFFF57B41ED49D12009E33AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SpaceInvader/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.jhhs.SpaceInvader;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		EFFF57B51ED49D12009E33AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SpaceInvader/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.jhhs.SpaceInvader;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		EFFF57B71ED49D12009E33AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SpaceInvaderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.jhhs.SpaceInvaderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpaceInvader.app/SpaceInvader";
+			};
+			name = Debug;
+		};
+		EFFF57B81ED49D12009E33AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = SpaceInvaderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.jhhs.SpaceInvaderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpaceInvader.app/SpaceInvader";
+			};
+			name = Release;
+		};
+		EFFF57BA1ED49D12009E33AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = SpaceInvaderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.jhhs.SpaceInvaderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = SpaceInvader;
+			};
+			name = Debug;
+		};
+		EFFF57BB1ED49D12009E33AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = SpaceInvaderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.jhhs.SpaceInvaderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = SpaceInvader;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EFFF57801ED49D12009E33AE /* Build configuration list for PBXProject "SpaceInvader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFFF57B11ED49D12009E33AE /* Debug */,
+				EFFF57B21ED49D12009E33AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EFFF57B31ED49D12009E33AE /* Build configuration list for PBXNativeTarget "SpaceInvader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFFF57B41ED49D12009E33AE /* Debug */,
+				EFFF57B51ED49D12009E33AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EFFF57B61ED49D12009E33AE /* Build configuration list for PBXNativeTarget "SpaceInvaderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFFF57B71ED49D12009E33AE /* Debug */,
+				EFFF57B81ED49D12009E33AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		EFFF57B91ED49D12009E33AE /* Build configuration list for PBXNativeTarget "SpaceInvaderUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EFFF57BA1ED49D12009E33AE /* Debug */,
+				EFFF57BB1ED49D12009E33AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EFFF577D1ED49D12009E33AE /* Project object */;
+}

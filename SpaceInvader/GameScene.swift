@@ -12,7 +12,7 @@ import GameplayKit
 class GameScene: SKScene {
     var plane = SKSpriteNode()
    
-    
+    var fireLabel: SKLabelNode!
     
     
     var leftButton: SKSpriteNode!
@@ -22,6 +22,8 @@ class GameScene: SKScene {
     var touchingScreen = false
     
     override func didMove(to view: SKView) {
+        
+        
         plane = childNode(withName: "spaceShip") as! SKSpriteNode
         leftButton = SKSpriteNode(imageNamed: "leftArrow")
         rightButton = SKSpriteNode(imageNamed: "rightArrow")
@@ -65,6 +67,8 @@ class GameScene: SKScene {
                 leftButton.color = UIColor.green
                 let moveTOLeft = SKAction.moveBy(x: -10, y: 0, duration: 0.00000001)
                 plane.run(moveTOLeft)
+            }else if objects.contains(fireLabel){
+                
             }
         }
         else { // if no touches.
@@ -72,5 +76,9 @@ class GameScene: SKScene {
             rightButton.color = UIColor.red
             leftButton.color = UIColor.red
         }
+    }
+    
+    func shoot(node: SKSpriteNode){
+        
     }
 }

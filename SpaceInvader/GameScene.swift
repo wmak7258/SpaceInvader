@@ -13,8 +13,6 @@ class GameScene: SKScene {
     var plane = SKSpriteNode()
    
     
-    
-    
     var leftButton: SKSpriteNode!
     var rightButton: SKSpriteNode!
     

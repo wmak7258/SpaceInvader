@@ -13,7 +13,7 @@ class GameScene: SKScene {
     var plane = SKSpriteNode()
    
     
-    
+    var alien: SKSpriteNode!
     
     var leftButton: SKSpriteNode!
     var rightButton: SKSpriteNode!
@@ -25,15 +25,19 @@ class GameScene: SKScene {
         plane = childNode(withName: "spaceShip") as! SKSpriteNode
         leftButton = SKSpriteNode(imageNamed: "leftArrow")
         rightButton = SKSpriteNode(imageNamed: "rightArrow")
+        alien = SKSpriteNode(imageNamed: "invader")
         
         leftButton.size = CGSize(width: 50, height: 50)
         rightButton.size = CGSize(width: 50, height: 50)
-      
+        alien.size = CGSize(width: 100, height: 100)
+        
         
         leftButton.position = CGPoint(x: 500, y: 100)
         addChild(leftButton)
         rightButton.position = CGPoint(x: 575, y: 100)
         addChild(rightButton)
+        alien.position = CGPoint(x: 375, y: 1200)
+        addChild(alien)
         
     }
     

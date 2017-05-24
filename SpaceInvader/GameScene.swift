@@ -11,7 +11,7 @@ import GameplayKit
 
 class GameScene: SKScene {
     var plane = SKSpriteNode()
-   
+    var fire = SKSpriteNode()
     
     var alien: SKSpriteNode!
     
@@ -23,18 +23,21 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         plane = childNode(withName: "spaceShip") as! SKSpriteNode
+        fire = SKSpriteNode(imageNamed: "shoot")
         leftButton = SKSpriteNode(imageNamed: "leftArrow")
         rightButton = SKSpriteNode(imageNamed: "rightArrow")
         alien = SKSpriteNode(imageNamed: "invader")
         
-        
-        leftButton.size = CGSize(width: 60 , height: 60)
+        fire.size = CGSize(width: 60, height: 60)
+        leftButton.size = CGSize(width: 60, height: 60)
         rightButton.size = CGSize(width: 60, height: 60)
-      
+        alien.size = CGSize(width: 100, height: 100)
         
-        leftButton.position = CGPoint(x: 575, y: 75)
+        fire.position = CGPoint(x: 100, y:85)
+        addChild(fire)
+        leftButton.position = CGPoint(x: 575, y: 85)
         addChild(leftButton)
-        rightButton.position = CGPoint(x: 650, y: 75)
+        rightButton.position = CGPoint(x: 650, y: 85)
         addChild(rightButton)
         alien.position = CGPoint(x: 375, y: 1200)
         addChild(alien)

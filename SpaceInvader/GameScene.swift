@@ -12,6 +12,8 @@ import GameplayKit
 class GameScene: SKScene {
     var plane = SKSpriteNode()
    
+    
+    
     var fireLabel: SKLabelNode!
     
     

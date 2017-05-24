@@ -24,13 +24,14 @@ class GameScene: SKScene {
         leftButton = SKSpriteNode(imageNamed: "leftArrow")
         rightButton = SKSpriteNode(imageNamed: "rightArrow")
         
-        leftButton.size = CGSize(width: 50, height: 50)
-        rightButton.size = CGSize(width: 50, height: 50)
+        
+        leftButton.size = CGSize(width: 60 , height: 60)
+        rightButton.size = CGSize(width: 60, height: 60)
       
         
-        leftButton.position = CGPoint(x: 500, y: 100)
+        leftButton.position = CGPoint(x: 575, y: 75)
         addChild(leftButton)
-        rightButton.position = CGPoint(x: 575, y: 100)
+        rightButton.position = CGPoint(x: 650, y: 75)
         addChild(rightButton)
         
     }
@@ -55,13 +56,13 @@ class GameScene: SKScene {
             if objects.contains(rightButton){
                 // move character to the right.
                 rightButton.color = UIColor.green
-                let moveTOLeft = SKAction.moveBy(x: 10, y: 0, duration: 0.00000001)
+                let moveTOLeft = SKAction.moveBy(x: 10, y: 0, duration: 0.001)
                 plane.run(moveTOLeft)
             }
             else if objects.contains(leftButton) {
                 // move character to the left.
                 leftButton.color = UIColor.green
-                let moveTOLeft = SKAction.moveBy(x: -10, y: 0, duration: 0.00000001)
+                let moveTOLeft = SKAction.moveBy(x: -10, y: 0, duration: 0.001)
                 plane.run(moveTOLeft)
             }
         }

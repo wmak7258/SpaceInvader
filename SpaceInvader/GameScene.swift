@@ -11,27 +11,25 @@ import GameplayKit
 
 class GameScene: SKScene {
     var plane = SKSpriteNode()
+   
     
     
     
     var leftButton: SKSpriteNode!
     var rightButton: SKSpriteNode!
-    var moved: SKSpriteNode!
     
     var touchPoint: CGPoint = CGPoint(x: 0.0, y: 0.0)
     var touchingScreen = false
     
     override func didMove(to view: SKView) {
-        plane.childNode(withName: "spaceShip")        
+        plane = childNode(withName: "spaceShip") as! SKSpriteNode
         leftButton = SKSpriteNode(color: UIColor.red, size: CGSize(width: 50.0, height: 50.0))
         leftButton.position = CGPoint(x: 100, y: 100)
         addChild(leftButton)
         rightButton = SKSpriteNode(color: UIColor.red, size: CGSize(width: 50.0, height: 50.0))
         rightButton.position = CGPoint(x: 175, y: 100)
         addChild(rightButton)
-        moved = SKSpriteNode(color: UIColor.blue, size: CGSize(width: 50.0, height: 50.0))
-        moved.position = CGPoint(x: 150.0, y: 75.0)
-        addChild(moved)
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -55,13 +53,15 @@ class GameScene: SKScene {
                 // move character to the right.
                 rightButton.color = UIColor.green
                 let moveTOLeft = SKAction.moveBy(x: 10, y: 0, duration: 0.00000001)
-                moved.run(moveTOLeft)
+                print(plane.position)
+                plane.run(moveTOLeft)
             }
             else if objects.contains(leftButton) {
                 // move character to the left.
                 leftButton.color = UIColor.green
                 let moveTOLeft = SKAction.moveBy(x: -10, y: 0, duration: 0.00000001)
-                moved.run(moveTOLeft)
+                print(plane.position)
+                plane.run(moveTOLeft)
             }
         }
         else { // if no touches.

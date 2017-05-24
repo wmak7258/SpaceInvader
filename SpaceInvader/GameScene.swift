@@ -22,7 +22,7 @@ class GameScene: SKScene {
     var touchingScreen = false
     
     override func didMove(to view: SKView) {
-        plane.childNode(withName: "spaceShip")
+        plane = childNode(withName: "spaceShip") as! SKSpriteNode
         leftButton = SKSpriteNode(imageNamed: "leftArrow")
         rightButton = SKSpriteNode(imageNamed: "rightArrow")
         
@@ -58,14 +58,12 @@ class GameScene: SKScene {
                 // move character to the right.
                 rightButton.color = UIColor.green
                 let moveTOLeft = SKAction.moveBy(x: 10, y: 0, duration: 0.00000001)
-                print(plane.position)
                 plane.run(moveTOLeft)
             }
             else if objects.contains(leftButton) {
                 // move character to the left.
                 leftButton.color = UIColor.green
                 let moveTOLeft = SKAction.moveBy(x: -10, y: 0, duration: 0.00000001)
-                print(plane.position)
                 plane.run(moveTOLeft)
             }
         }

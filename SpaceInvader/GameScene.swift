@@ -23,11 +23,16 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         plane.childNode(withName: "spaceShip")
-        leftButton = SKSpriteNode(color: UIColor.red, size: CGSize(width: 50.0, height: 50.0))
-        leftButton.position = CGPoint(x: 100, y: 100)
+        leftButton = SKSpriteNode(imageNamed: "leftArrow")
+        rightButton = SKSpriteNode(imageNamed: "rightArrow")
+        
+        leftButton.size = CGSize(width: 50, height: 50)
+        rightButton.size = CGSize(width: 50, height: 50)
+      
+        
+        leftButton.position = CGPoint(x: 500, y: 100)
         addChild(leftButton)
-        rightButton = SKSpriteNode(color: UIColor.red, size: CGSize(width: 50.0, height: 50.0))
-        rightButton.position = CGPoint(x: 175, y: 100)
+        rightButton.position = CGPoint(x: 575, y: 100)
         addChild(rightButton)
         moved = SKSpriteNode(color: UIColor.blue, size: CGSize(width: 50.0, height: 50.0))
         moved.position = CGPoint(x: 150.0, y: 75.0)

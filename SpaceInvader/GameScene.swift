@@ -12,7 +12,7 @@ import GameplayKit
 class GameScene: SKScene {
     var plane = SKSpriteNode()
    
-    
+    var alien: SKSpriteNode!
     
     var fireLabel: SKLabelNode!
     
@@ -24,6 +24,10 @@ class GameScene: SKScene {
     var touchingScreen = false
     
     override func didMove(to view: SKView) {
+        fireLabel = SKLabelNode(text: "Fire")
+        fireLabel.color = UIColor.red
+        fireLabel.position = CGPoint(x: 575 - (fireLabel.frame.width / 2), y: 75.0)
+        addChild(fireLabel)
         
         
         plane = childNode(withName: "spaceShip") as! SKSpriteNode

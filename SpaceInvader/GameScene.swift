@@ -11,9 +11,12 @@ import GameplayKit
 
 class GameScene: SKScene {
     var plane = SKSpriteNode()
+   
     var fire = SKSpriteNode()
     
     var alien: SKSpriteNode!
+    
+    
     
     var leftButton: SKSpriteNode!
     var rightButton: SKSpriteNode!
@@ -22,6 +25,7 @@ class GameScene: SKScene {
     var touchingScreen = false
     
     override func didMove(to view: SKView) {
+    
         plane = childNode(withName: "spaceShip") as! SKSpriteNode
         fire = SKSpriteNode(imageNamed: "shoot")
         leftButton = SKSpriteNode(imageNamed: "leftArrow")
@@ -100,12 +104,21 @@ class GameScene: SKScene {
                 leftButton.color = UIColor.green
                 let moveTOLeft = SKAction.moveBy(x: -10, y: 0, duration: 0.001)
                 plane.run(moveTOLeft)
+            }else if objects.contains(fire){
+                shoot(node: plane)
             }
         }
         else { // if no touches.
             // move character back to middle of screen. Or just do nothing.
-            rightButton.color = UIColor.red
-            leftButton.color = UIColor.red
+           
         }
+    }
+    
+    func shoot(node: SKSpriteNode){
+        let bullet = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 25.0, height: 50.0))
+        bullet.position = plane.position
+        addChild(bullet)
+        let moveUp = SKAction.moveTo(y: 1334, duration: 5)
+        bullet.run(moveUp)
     }
 }

@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate{
     var plane = SKSpriteNode()
    
     var fire = SKSpriteNode()
@@ -25,7 +25,8 @@ class GameScene: SKScene {
     var touchingScreen = false
     
     override func didMove(to view: SKView) {
-    
+        physicsWorld.contactDelegate = self
+
         plane = childNode(withName: "spaceShip") as! SKSpriteNode
         fire = SKSpriteNode(imageNamed: "shoot")
         leftButton = SKSpriteNode(imageNamed: "leftArrow")
@@ -87,10 +88,15 @@ class GameScene: SKScene {
     }
     
     func shoot(node: SKSpriteNode){
-        let bullet = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 25.0, height: 50.0))
+        
+        let bullet = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 15.0, height: 50.0))
         bullet.position = plane.position
         addChild(bullet)
-        let moveUp = SKAction.moveTo(y: 1334, duration: 5)
-        bullet.run(moveUp)
+        bullet.name = "bullet"
+        let wait = SKAction.wait(forDuration: 1)
+        let moveUp = SKAction.moveTo(y: 1370, duration: 5)
+        let action = SKAction.sequence([wait, moveUp])
+        bullet.run(action)
+        //bullet.removeFromParent()
     }
 }

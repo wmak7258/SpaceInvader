@@ -28,7 +28,7 @@ class GameScene: SKScene {
         rightButton = SKSpriteNode(imageNamed: "rightArrow")
         alien = SKSpriteNode(imageNamed: "invader")
         
-        fire.size = CGSize(width: 60, height: 60)
+        fire.size = CGSize(width: 70, height: 70)
         leftButton.size = CGSize(width: 60, height: 60)
         rightButton.size = CGSize(width: 60, height: 60)
         alien.size = CGSize(width: 100, height: 100)

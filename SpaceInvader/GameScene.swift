@@ -115,10 +115,16 @@ class GameScene: SKScene {
     }
     
     func shoot(node: SKSpriteNode){
-        let bullet = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 25.0, height: 50.0))
+        let bullet = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 15.0, height: 50.0))
         bullet.position = plane.position
+        bullet.zPosition = 2
         addChild(bullet)
-        let moveUp = SKAction.moveTo(y: 1334, duration: 5)
-        bullet.run(moveUp)
+        let moveUp = SKAction.moveBy(x: 0, y: 1330, duration: 3)
+        let fade = SKAction.fadeOut(withDuration: 3)
+        let remove = SKAction.removeFromParent()
+        let wait = SKAction.wait(forDuration: 1)
+        let action = SKAction.sequence([moveUp,fade,remove,wait])
+        bullet.run(action)
+        
     }
 }

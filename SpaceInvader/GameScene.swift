@@ -39,8 +39,36 @@ class GameScene: SKScene {
         addChild(leftButton)
         rightButton.position = CGPoint(x: 650, y: 85)
         addChild(rightButton)
-        alien.position = CGPoint(x: 375, y: 1200)
-        addChild(alien)
+        
+        
+        let alienWidth = alien.size.width
+        let totalAlienWidth = alienWidth * CGFloat(5)
+        let xOffset = (frame.width - totalAlienWidth)/2
+        for i in 0..<5 {
+            let alien = SKSpriteNode(imageNamed: "invader")
+            alien.size = CGSize(width: 100, height: 100)
+            alien.position = CGPoint(x: xOffset + CGFloat(CGFloat(i) + 0.5) * alienWidth, y: frame.height * 0.9)
+            alien.physicsBody = SKPhysicsBody(rectangleOf: alien.frame.size)
+            alien.physicsBody?.affectedByGravity = false
+            alien.physicsBody?.allowsRotation = false
+            alien.physicsBody?.isDynamic = false
+            alien.zPosition = 2
+            alien.name = "invader"
+            addChild(alien)
+        }
+        
+        for i in 0..<5 {
+            let alien = SKSpriteNode(imageNamed: "invader")
+            alien.size = CGSize(width: 100, height: 100)
+            alien.position = CGPoint(x: xOffset + CGFloat(CGFloat(i) + 0.5) * alienWidth, y: frame.height * 0.8)
+            alien.physicsBody = SKPhysicsBody(rectangleOf: alien.frame.size)
+            alien.physicsBody?.affectedByGravity = false
+            alien.physicsBody?.allowsRotation = false
+            alien.physicsBody?.isDynamic = false
+            alien.zPosition = 2
+            alien.name = "invader"
+            addChild(alien)
+        }
         
     }
     

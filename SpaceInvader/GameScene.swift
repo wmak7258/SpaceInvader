@@ -20,7 +20,7 @@ class GameScene: SKScene {
     
     var leftButton: SKSpriteNode!
     var rightButton: SKSpriteNode!
-    
+    var bullet = SKSpriteNode()
     var touchPoint: CGPoint = CGPoint(x: 0.0, y: 0.0)
     var touchingScreen = false
     
@@ -106,6 +106,12 @@ class GameScene: SKScene {
                 plane.run(moveTOLeft)
             }else if objects.contains(fire){
                 shoot(node: plane)
+                
+                if bullet.position.y < frame.size.height{
+                    touchingScreen = false
+                } else {
+                   touchingScreen = true
+                }
             }
         }
         else { // if no touches.
@@ -115,7 +121,7 @@ class GameScene: SKScene {
     }
     
     func shoot(node: SKSpriteNode){
-        let bullet = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 15.0, height: 50.0))
+        bullet = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 15.0, height: 50.0))
         bullet.position = plane.position
         bullet.zPosition = 2
         addChild(bullet)
@@ -125,6 +131,5 @@ class GameScene: SKScene {
         let wait = SKAction.wait(forDuration: 1)
         let action = SKAction.sequence([moveUp,fade,remove,wait])
         bullet.run(action)
-        
     }
 }

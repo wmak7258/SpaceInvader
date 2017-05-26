@@ -15,7 +15,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var fire = SKSpriteNode()
     
     var alien: SKSpriteNode!
-    
+    var nodeCounter = 0
     
     
     var leftButton: SKSpriteNode!
@@ -135,6 +135,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         let bullet = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 15.0, height: 50.0))
         bullet.position = plane.position
+        bullet.zPosition = 2
         addChild(bullet)
         bullet.name = "bullet"
         let wait = SKAction.wait(forDuration: 1)

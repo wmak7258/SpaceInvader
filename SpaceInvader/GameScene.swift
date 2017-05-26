@@ -20,7 +20,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var leftButton: SKSpriteNode!
     var rightButton: SKSpriteNode!
-    
+    var bullet = SKSpriteNode()
     var touchPoint: CGPoint = CGPoint(x: 0.0, y: 0.0)
     var touchingScreen = false
     
@@ -113,6 +113,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 plane.run(moveTOLeft)
             }else if objects.contains(fire){
                 shoot(node: plane)
+                
+                if bullet.position.y < frame.size.height{
+                    touchingScreen = false
+                } else {
+                   touchingScreen = true
+                }
             }
         }
         else { // if no touches.
@@ -137,6 +143,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let wait = SKAction.wait(forDuration: 1)
         let action = SKAction.sequence([moveUp,fade,remove,wait])
         bullet.run(action)
-        
     }
 }

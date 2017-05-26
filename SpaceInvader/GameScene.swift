@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     var plane = SKSpriteNode()
    
     var fire = SKSpriteNode()
@@ -36,7 +36,6 @@ class GameScene: SKScene {
         leftButton.size = CGSize(width: 60, height: 60)
         rightButton.size = CGSize(width: 60, height: 60)
         alien.size = CGSize(width: 100, height: 100)
-        
         fire.position = CGPoint(x: 100, y:85)
         addChild(fire)
         leftButton.position = CGPoint(x: 575, y: 85)
@@ -45,6 +44,9 @@ class GameScene: SKScene {
         addChild(rightButton)
         
         
+    
+        
+
         let alienWidth = alien.size.width
         let totalAlienWidth = alienWidth * CGFloat(5)
         let xOffset = (frame.width - totalAlienWidth)/2
@@ -58,6 +60,8 @@ class GameScene: SKScene {
             alien.physicsBody?.isDynamic = false
             alien.zPosition = 2
             alien.name = "invader"
+            alien.physicsBody = SKPhysicsBody(rectangleOf: alien.size)
+            alien.physicsBody?.affectedByGravity = false
             addChild(alien)
         }
         
@@ -71,6 +75,9 @@ class GameScene: SKScene {
             alien.physicsBody?.isDynamic = false
             alien.zPosition = 2
             alien.name = "invader"
+            alien.physicsBody = SKPhysicsBody(rectangleOf: alien.size)
+            alien.physicsBody?.affectedByGravity = false
+
             addChild(alien)
         }
         
@@ -115,11 +122,13 @@ class GameScene: SKScene {
     }
     
     func shoot(node: SKSpriteNode){
-        let count = self["bullet"].count
-        print(count)
         let bullet = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 15.0, height: 50.0))
+        plane.physicsBody?.isDynamic = false
         bullet.position = plane.position
         bullet.zPosition = 2
+        bullet.physicsBody = SKPhysicsBody(rectangleOf: bullet.size)
+        bullet.physicsBody!.isDynamic = false
+        bullet.physicsBody?.affectedByGravity = false
         addChild(bullet)
         bullet.name = "bullet"
         let moveUp = SKAction.moveBy(x: 0, y: 1330, duration: 3)

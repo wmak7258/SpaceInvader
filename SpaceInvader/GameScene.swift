@@ -91,6 +91,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         touchingScreen = false
     }
     
+    func collisionBetween(bullet: SKNode, alien: SKNode) {
+            destroy(bullet: bullet, alien: alien)
+    }
+    
+    func destroy(bullet: SKNode, alien: SKNode) {
+        bullet.removeFromParent()
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        if contact.bodyA.node?.name == "bullet" {
+            collisionBetween(bullet: contact.bodyA.node!, alien: contact.bodyB.node!)
+        } else if contact.bodyB.node?.name == "bullet" {
+            collisionBetween(bullet: contact.bodyB.node!, alien: contact.bodyA.node!)
+        }
+    }
+    
     override func update(_ currentTime: CFTimeInterval) {
         if touchingScreen {
             let objects = nodes(at: touchPoint)

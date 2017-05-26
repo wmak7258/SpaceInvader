@@ -20,7 +20,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     var leftButton: SKSpriteNode!
     var rightButton: SKSpriteNode!
-    
+    var bullet = SKSpriteNode()
     var touchPoint: CGPoint = CGPoint(x: 0.0, y: 0.0)
     var touchingScreen = false
     
@@ -40,7 +40,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         leftButton.size = CGSize(width: 60, height: 60)
         rightButton.size = CGSize(width: 60, height: 60)
         alien.size = CGSize(width: 100, height: 100)
-        
         fire.position = CGPoint(x: 100, y:85)
         addChild(fire)
         leftButton.position = CGPoint(x: 575, y: 85)
@@ -49,6 +48,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         addChild(rightButton)
         
         
+    
+        
+
         let alienWidth = alien.size.width
         let totalAlienWidth = alienWidth * CGFloat(5)
         let xOffset = (frame.width - totalAlienWidth)/2
@@ -62,6 +64,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             alien.physicsBody?.isDynamic = false
             alien.zPosition = 2
             alien.name = "invader"
+            alien.physicsBody = SKPhysicsBody(rectangleOf: alien.size)
+            alien.physicsBody?.affectedByGravity = false
             addChild(alien)
         }
         
@@ -75,6 +79,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             alien.physicsBody?.isDynamic = false
             alien.zPosition = 2
             alien.name = "invader"
+            alien.physicsBody = SKPhysicsBody(rectangleOf: alien.size)
+            alien.physicsBody?.affectedByGravity = false
+
             addChild(alien)
         }
         
@@ -146,6 +153,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     func shoot(node: SKSpriteNode, shoot: Bool) -> SKSpriteNode{
         let bullet = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 15.0, height: 50.0))
+        plane.physicsBody?.isDynamic = false
         bullet.position = plane.position
         bullet.zPosition = 2
         if(shoot){

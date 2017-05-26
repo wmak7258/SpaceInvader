@@ -15,7 +15,7 @@ class GameScene: SKScene {
     var fire = SKSpriteNode()
     
     var alien: SKSpriteNode!
-    
+    var nodeCounter = 0
     
     
     var leftButton: SKSpriteNode!
@@ -115,10 +115,13 @@ class GameScene: SKScene {
     }
     
     func shoot(node: SKSpriteNode){
+        let count = self["bullet"].count
+        print(count)
         let bullet = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 15.0, height: 50.0))
         bullet.position = plane.position
         bullet.zPosition = 2
         addChild(bullet)
+        bullet.name = "bullet"
         let moveUp = SKAction.moveBy(x: 0, y: 1330, duration: 3)
         let fade = SKAction.fadeOut(withDuration: 3)
         let remove = SKAction.removeFromParent()

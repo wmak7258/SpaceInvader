@@ -24,6 +24,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var touchPoint: CGPoint = CGPoint(x: 0.0, y: 0.0)
     var touchingScreen = false
     
+    var bulletYPoistion = 0
+    var lastBullet: SKSpriteNode!
+    
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
 
@@ -108,6 +111,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     override func update(_ currentTime: CFTimeInterval) {
+        let count = self["bullet"].count
+        print(count)
+        if count != 0{
+            bulletYPoistion = Int(lastBullet.position.y)
+
+        }
         if touchingScreen {
             let objects = nodes(at: touchPoint)
             if objects.contains(rightButton){
@@ -122,7 +131,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                 let moveTOLeft = SKAction.moveBy(x: -10, y: 0, duration: 0.001)
                 plane.run(moveTOLeft)
             }else if objects.contains(fire){
-                shoot(node: plane)
+                
+                if count == 0 || lastBullet.position.y >= plane.position.y + 100{
+                    lastBullet = shoot(node: plane, shoot: true)
+                }
+                
             }
         }
         else { // if no touches.
@@ -131,17 +144,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         }
     }
     
-    func shoot(node: SKSpriteNode){
-        
+    func shoot(node: SKSpriteNode, shoot: Bool) -> SKSpriteNode{
         let bullet = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 15.0, height: 50.0))
         bullet.position = plane.position
         bullet.zPosition = 2
-        addChild(bullet)
+        if(shoot){
+            addChild(bullet)
+        }
+        
+    
         bullet.name = "bullet"
-        let wait = SKAction.wait(forDuration: 1)
-        let moveUp = SKAction.moveTo(y: 1370, duration: 5)
-        let action = SKAction.sequence([wait, moveUp])
+        let remove = SKAction.removeFromParent()
+        
+        let moveUp = SKAction.moveTo(y: frame.size.height, duration: 3)
+        let action = SKAction.sequence([moveUp, remove])
         bullet.run(action)
+        return bullet
+        
         //bullet.removeFromParent()
     }
 }

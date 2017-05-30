@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF6B22C91EDDDB26006C4588 /* fire.sks in Resources */ = {isa = PBXBuildFile; fileRef = EF6B22C71EDDDB26006C4588 /* fire.sks */; };
 		EFFF57891ED49D12009E33AE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFF57881ED49D12009E33AE /* AppDelegate.swift */; };
 		EFFF578B1ED49D12009E33AE /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = EFFF578A1ED49D12009E33AE /* GameScene.sks */; };
 		EFFF578F1ED49D12009E33AE /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFF578E1ED49D12009E33AE /* GameScene.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EF6B22C71EDDDB26006C4588 /* fire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = fire.sks; path = myParticle/fire.sks; sourceTree = SOURCE_ROOT; };
 		EFFF57851ED49D12009E33AE /* SpaceInvader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpaceInvader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFFF57881ED49D12009E33AE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFFF578A1ED49D12009E33AE /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				EFFF57881ED49D12009E33AE /* AppDelegate.swift */,
+				EF6B22C71EDDDB26006C4588 /* fire.sks */,
 				EFFF578A1ED49D12009E33AE /* GameScene.sks */,
 				EFFF578E1ED49D12009E33AE /* GameScene.swift */,
 				EFFF57901ED49D12009E33AE /* GameViewController.swift */,
@@ -240,6 +243,7 @@
 			files = (
 				EFFF57941ED49D12009E33AE /* Main.storyboard in Resources */,
 				EFFF578B1ED49D12009E33AE /* GameScene.sks in Resources */,
+				EF6B22C91EDDDB26006C4588 /* fire.sks in Resources */,
 				EFFF57961ED49D12009E33AE /* Assets.xcassets in Resources */,
 				EFFF57991ED49D12009E33AE /* LaunchScreen.storyboard in Resources */,
 			);

@@ -112,6 +112,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func destroy(bullet: SKNode, alien: SKNode) {
+        let fire = SKEmitterNode(fileNamed: "fire")
+        fire?.position = alien.position
+        fire?.zPosition = 2
+        addChild(fire!)
+        fire?.run(SKAction.sequence([SKAction.wait(forDuration:0.8), SKAction.fadeOut(withDuration: 1) ,SKAction.removeFromParent()]))
         bullet.removeFromParent()
         alien.removeFromParent()
     }

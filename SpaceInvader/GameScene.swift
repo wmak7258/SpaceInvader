@@ -127,7 +127,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     override func update(_ currentTime: CFTimeInterval) {
         let count = self["bullet"].count
-        print(count)
         if count != 0{
             bulletYPoistion = Int(lastBullet.position.y)
 
@@ -169,6 +168,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         }
         
     
+        bullet.physicsBody = SKPhysicsBody(rectangleOf: bullet.size)
+        bullet.physicsBody!.isDynamic = false
+        bullet.physicsBody?.affectedByGravity = false
+        
         bullet.name = "bullet"
         let remove = SKAction.removeFromParent()
         

@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     var plane = SKSpriteNode()
    
     var fire = SKSpriteNode()
@@ -24,6 +24,9 @@ class GameScene: SKScene {
     var touchPoint: CGPoint = CGPoint(x: 0.0, y: 0.0)
     var touchingScreen = false
     
+    let bulletCategory: UInt32 = 0x1 << 0
+    let alienCategory: UInt32 = 0x1 << 1
+    
     override func didMove(to view: SKView) {
     
         plane = childNode(withName: "spaceShip") as! SKSpriteNode
@@ -36,6 +39,14 @@ class GameScene: SKScene {
         leftButton.size = CGSize(width: 60, height: 60)
         rightButton.size = CGSize(width: 60, height: 60)
         alien.size = CGSize(width: 100, height: 100)
+    
+        alien.physicsBody?.categoryBitMask = alienCategory
+        bullet.physicsBody?.categoryBitMask = bulletCategory
+        
+        
+        physicsWorld.contactDelegate = self
+        
+        
         
         fire.position = CGPoint(x: 100, y:85)
         addChild(fire)
@@ -58,6 +69,7 @@ class GameScene: SKScene {
             alien.physicsBody?.isDynamic = false
             alien.zPosition = 2
             alien.name = "invader"
+            alien.physicsBody?.categoryBitMask = alienCategory
             addChild(alien)
         }
         
@@ -71,9 +83,28 @@ class GameScene: SKScene {
             alien.physicsBody?.isDynamic = false
             alien.zPosition = 2
             alien.name = "invader"
+            alien.physicsBody?.categoryBitMask = alienCategory
             addChild(alien)
         }
+        bullet.physicsBody?.contactTestBitMask = bulletCategory | alienCategory
+        bullet.physicsBody?.collisionBitMask = bulletCategory | alienCategory
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        var firstBody: SKPhysicsBody
+        var secondBody : SKPhysicsBody
         
+        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
+            firstBody = contact.bodyA
+            secondBody = contact.bodyB
+        } else {
+            firstBody = contact.bodyB
+            secondBody = contact.bodyA
+        }
+        
+        if firstBody.categoryBitMask == bulletCategory && secondBody.categoryBitMask == alienCategory    {
+            
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -107,7 +138,7 @@ class GameScene: SKScene {
             }else if objects.contains(fire){
                 shoot(node: plane)
                 
-                if bullet.position.y < frame.size.height{
+                if bullet.position.y < frame.maxY{
                     touchingScreen = false
                 } else {
                    touchingScreen = true
@@ -123,7 +154,7 @@ class GameScene: SKScene {
     func shoot(node: SKSpriteNode){
         bullet = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 15.0, height: 50.0))
         bullet.position = plane.position
-        bullet.zPosition = 2
+        bullet.zPosition = 3
         addChild(bullet)
         bullet.name = "bullet"
         let moveUp = SKAction.moveBy(x: 0, y: 1330, duration: 3)

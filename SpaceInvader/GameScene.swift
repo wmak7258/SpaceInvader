@@ -121,6 +121,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     override func update(_ currentTime: CFTimeInterval) {
         let count = self["bullet"].count
+        
         if count != 0{
             bulletYPoistion = Int(lastBullet.position.y)
 

@@ -28,7 +28,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var lastBullet: SKSpriteNode!
     
     override func didMove(to view: SKView) {
-        
+
         physicsWorld.contactDelegate = self
 
         plane = childNode(withName: "spaceShip") as! SKSpriteNode
@@ -72,7 +72,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             alien.physicsBody?.isDynamic = true
             alien.zPosition = 2
             alien.name = "invader"
-            alien.physicsBody = SKPhysicsBody(rectangleOf: alien.size)
+
             addChild(alien)
         }
         
@@ -86,7 +86,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             alien.physicsBody?.isDynamic = true
             alien.zPosition = 2
             alien.name = "invader"
-            alien.physicsBody = SKPhysicsBody(rectangleOf: alien.size)
+        
             addChild(alien)
         }
 

@@ -28,6 +28,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var lastBullet: SKSpriteNode!
     
     override func didMove(to view: SKView) {
+
         physicsWorld.contactDelegate = self
 
         plane = childNode(withName: "spaceShip") as! SKSpriteNode
@@ -87,7 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
+
         let touch = touches.first!
         let point = touch.location(in: self)
         
@@ -126,13 +127,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         }
         if touchingScreen {
             let objects = nodes(at: touchPoint)
-            if objects.contains(rightButton){
+            if objects.contains(rightButton) && plane.position.x <= (frame.width - (plane.size.width / 2)) {
                 // move character to the right.
                 rightButton.color = UIColor.green
                 let moveTOLeft = SKAction.moveBy(x: 10, y: 0, duration: 0.001)
                 plane.run(moveTOLeft)
             }
-            else if objects.contains(leftButton) {
+            else if objects.contains(leftButton) && plane.position.x >= (plane.size.width / 2) {
                 // move character to the left.
                 leftButton.color = UIColor.green
                 let moveTOLeft = SKAction.moveBy(x: -10, y: 0, duration: 0.001)
@@ -152,6 +153,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func shoot(node: SKSpriteNode, shoot: Bool) -> SKSpriteNode{
+
         let bullet = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 15.0, height: 50.0))
         plane.physicsBody?.isDynamic = false
         bullet.position = plane.position
@@ -172,8 +174,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let moveUp = SKAction.moveTo(y: frame.size.height, duration: 3)
         let action = SKAction.sequence([moveUp, remove])
         bullet.run(action)
+
         return bullet
         
-        //bullet.removeFromParent()
     }
 }

@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene: SKScene, SKPhysicsContactDelegate{
     var plane = SKSpriteNode()
    
     var fire = SKSpriteNode()
@@ -24,10 +24,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var touchPoint: CGPoint = CGPoint(x: 0.0, y: 0.0)
     var touchingScreen = false
     
-    let bulletCategory: UInt32 = 0x1 << 0
-    let alienCategory: UInt32 = 0x1 << 1
-    
-    override func didMove(to view: SKView) {
+    var bulletYPoistion = 0
+    var lastBullet: SKSpriteNode!
     
     override func didMove(to view: SKView) {
         physicsWorld.contactDelegate = self
@@ -42,10 +40,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         leftButton.size = CGSize(width: 60, height: 60)
         rightButton.size = CGSize(width: 60, height: 60)
         alien.size = CGSize(width: 100, height: 100)
-    
-        alien.physicsBody?.categoryBitMask = alienCategory
-        bullet.physicsBody?.categoryBitMask = bulletCategory
-        
+      
+
         
         physicsWorld.contactDelegate = self
         
@@ -75,7 +71,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             alien.physicsBody?.isDynamic = false
             alien.zPosition = 2
             alien.name = "invader"
-            alien.physicsBody?.categoryBitMask = alienCategory
+            alien.physicsBody = SKPhysicsBody(rectangleOf: alien.size)
+            alien.physicsBody?.affectedByGravity = false
             addChild(alien)
         }
         
@@ -89,29 +86,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             alien.physicsBody?.isDynamic = false
             alien.zPosition = 2
             alien.name = "invader"
-            alien.physicsBody?.categoryBitMask = alienCategory
+            alien.physicsBody = SKPhysicsBody(rectangleOf: alien.size)
+            alien.physicsBody?.affectedByGravity = false
+
             addChild(alien)
         }
-        bullet.physicsBody?.contactTestBitMask = bulletCategory | alienCategory
-        bullet.physicsBody?.collisionBitMask = bulletCategory | alienCategory
+
     }
-    
-    func didBegin(_ contact: SKPhysicsContact) {
-        var firstBody: SKPhysicsBody
-        var secondBody : SKPhysicsBody
-        
-        if contact.bodyA.categoryBitMask < contact.bodyB.categoryBitMask {
-            firstBody = contact.bodyA
-            secondBody = contact.bodyB
-        } else {
-            firstBody = contact.bodyB
-            secondBody = contact.bodyA
-        }
-        
-        if firstBody.categoryBitMask == bulletCategory && secondBody.categoryBitMask == alienCategory    {
-            
-        }
-    }
+
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -165,10 +147,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 plane.run(moveTOLeft)
             }else if objects.contains(fire){
                 
-                if bullet.position.y < frame.maxY{
-                    touchingScreen = false
-                } else {
-                   touchingScreen = true
+                if count == 0 || lastBullet.position.y >= plane.position.y + 100{
+                    lastBullet = shoot(node: plane, shoot: true)
                 }
                 
             }
@@ -183,8 +163,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let bullet = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 15.0, height: 50.0))
         plane.physicsBody?.isDynamic = false
         bullet.position = plane.position
-        bullet.zPosition = 3
-        addChild(bullet)
+        bullet.zPosition = 2
+        if(shoot){
+            addChild(bullet)
+        }
+        
+    
         bullet.name = "bullet"
         let remove = SKAction.removeFromParent()
         

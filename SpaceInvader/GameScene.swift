@@ -29,6 +29,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
     
+    override func didMove(to view: SKView) {
+        physicsWorld.contactDelegate = self
+
         plane = childNode(withName: "spaceShip") as! SKSpriteNode
         fire = SKSpriteNode(imageNamed: "shoot")
         leftButton = SKSpriteNode(imageNamed: "leftArrow")
@@ -56,6 +59,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         addChild(rightButton)
         
         
+    
+        
+
         let alienWidth = alien.size.width
         let totalAlienWidth = alienWidth * CGFloat(5)
         let xOffset = (frame.width - totalAlienWidth)/2
@@ -121,7 +127,29 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         touchingScreen = false
     }
     
+    func collisionBetween(bullet: SKNode, alien: SKNode) {
+            destroy(bullet: bullet, alien: alien)
+    }
+    
+    func destroy(bullet: SKNode, alien: SKNode) {
+        bullet.removeFromParent()
+    }
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        if contact.bodyA.node?.name == "bullet" {
+            collisionBetween(bullet: contact.bodyA.node!, alien: contact.bodyB.node!)
+        } else if contact.bodyB.node?.name == "bullet" {
+            collisionBetween(bullet: contact.bodyB.node!, alien: contact.bodyA.node!)
+        }
+    }
+    
     override func update(_ currentTime: CFTimeInterval) {
+        let count = self["bullet"].count
+        print(count)
+        if count != 0{
+            bulletYPoistion = Int(lastBullet.position.y)
+
+        }
         if touchingScreen {
             let objects = nodes(at: touchPoint)
             if objects.contains(rightButton){
@@ -136,13 +164,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 let moveTOLeft = SKAction.moveBy(x: -10, y: 0, duration: 0.001)
                 plane.run(moveTOLeft)
             }else if objects.contains(fire){
-                shoot(node: plane)
                 
                 if bullet.position.y < frame.maxY{
                     touchingScreen = false
                 } else {
                    touchingScreen = true
                 }
+                
             }
         }
         else { // if no touches.
@@ -151,17 +179,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func shoot(node: SKSpriteNode){
-        bullet = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 15.0, height: 50.0))
+    func shoot(node: SKSpriteNode, shoot: Bool) -> SKSpriteNode{
+        let bullet = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 15.0, height: 50.0))
+        plane.physicsBody?.isDynamic = false
         bullet.position = plane.position
         bullet.zPosition = 3
         addChild(bullet)
         bullet.name = "bullet"
-        let moveUp = SKAction.moveBy(x: 0, y: 1330, duration: 3)
-        let fade = SKAction.fadeOut(withDuration: 3)
         let remove = SKAction.removeFromParent()
-        let wait = SKAction.wait(forDuration: 1)
-        let action = SKAction.sequence([moveUp,fade,remove,wait])
+        
+        let moveUp = SKAction.moveTo(y: frame.size.height, duration: 3)
+        let action = SKAction.sequence([moveUp, remove])
         bullet.run(action)
+        return bullet
+        
+        //bullet.removeFromParent()
     }
 }

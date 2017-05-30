@@ -28,6 +28,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var lastBullet: SKSpriteNode!
     
     override func didMove(to view: SKView) {
+        
         physicsWorld.contactDelegate = self
 
         plane = childNode(withName: "spaceShip") as! SKSpriteNode
@@ -72,7 +73,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             alien.zPosition = 2
             alien.name = "invader"
             alien.physicsBody = SKPhysicsBody(rectangleOf: alien.size)
-            
             addChild(alien)
         }
         
@@ -87,12 +87,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             alien.zPosition = 2
             alien.name = "invader"
             alien.physicsBody = SKPhysicsBody(rectangleOf: alien.size)
-
             addChild(alien)
         }
 
     }
-
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -127,6 +125,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     override func update(_ currentTime: CFTimeInterval) {
+       
         let count = self["bullet"].count
         if count != 0{
             bulletYPoistion = Int(lastBullet.position.y)
@@ -138,6 +137,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                 // move character to the right.
                 rightButton.color = UIColor.green
                 let moveTOLeft = SKAction.moveBy(x: 10, y: 0, duration: 0.001)
+                
                 plane.run(moveTOLeft)
             }
             else if objects.contains(leftButton) {

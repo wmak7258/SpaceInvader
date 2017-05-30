@@ -41,6 +41,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         leftButton.size = CGSize(width: 60, height: 60)
         rightButton.size = CGSize(width: 60, height: 60)
         alien.size = CGSize(width: 100, height: 100)
+      
+        physicsWorld.gravity.dy = 0
+        
+        physicsWorld.contactDelegate = self
+        
+        
+        
         fire.position = CGPoint(x: 100, y:85)
         addChild(fire)
         leftButton.position = CGPoint(x: 575, y: 85)
@@ -62,11 +69,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             alien.physicsBody = SKPhysicsBody(rectangleOf: alien.frame.size)
             alien.physicsBody?.affectedByGravity = false
             alien.physicsBody?.allowsRotation = false
-            alien.physicsBody?.isDynamic = false
+            alien.physicsBody?.isDynamic = true
             alien.zPosition = 2
             alien.name = "invader"
-            alien.physicsBody = SKPhysicsBody(rectangleOf: alien.size)
-            alien.physicsBody?.affectedByGravity = false
+
             addChild(alien)
         }
         
@@ -77,14 +83,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             alien.physicsBody = SKPhysicsBody(rectangleOf: alien.frame.size)
             alien.physicsBody?.affectedByGravity = false
             alien.physicsBody?.allowsRotation = false
-            alien.physicsBody?.isDynamic = false
+            alien.physicsBody?.isDynamic = true
             alien.zPosition = 2
             alien.name = "invader"
-            alien.physicsBody = SKPhysicsBody(rectangleOf: alien.size)
-            alien.physicsBody?.affectedByGravity = false
+        
             addChild(alien)
         }
-        
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -107,6 +112,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func destroy(bullet: SKNode, alien: SKNode) {
+        let fire = SKEmitterNode(fileNamed: "fire")
+        fire?.position = alien.position
+        fire?.zPosition = 2
+        addChild(fire!)
+        fire?.run(SKAction.sequence([SKAction.wait(forDuration:0.8), SKAction.fadeOut(withDuration: 1) ,SKAction.removeFromParent()]))
         bullet.removeFromParent()
         alien.removeFromParent()
     }
@@ -120,6 +130,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     override func update(_ currentTime: CFTimeInterval) {
+       
         let count = self["bullet"].count
         
         if count != 0{
@@ -132,6 +143,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                 // move character to the right.
                 rightButton.color = UIColor.green
                 let moveTOLeft = SKAction.moveBy(x: 10, y: 0, duration: 0.001)
+                
                 plane.run(moveTOLeft)
             }
             else if objects.contains(leftButton) && plane.position.x >= (plane.size.width / 2) {

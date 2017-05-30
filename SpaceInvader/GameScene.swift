@@ -41,7 +41,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         rightButton.size = CGSize(width: 60, height: 60)
         alien.size = CGSize(width: 100, height: 100)
       
-
+        physicsWorld.gravity.dy = 0
         
         physicsWorld.contactDelegate = self
         
@@ -68,11 +68,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             alien.physicsBody = SKPhysicsBody(rectangleOf: alien.frame.size)
             alien.physicsBody?.affectedByGravity = false
             alien.physicsBody?.allowsRotation = false
-            alien.physicsBody?.isDynamic = false
+            alien.physicsBody?.isDynamic = true
             alien.zPosition = 2
             alien.name = "invader"
             alien.physicsBody = SKPhysicsBody(rectangleOf: alien.size)
-            alien.physicsBody?.affectedByGravity = false
+            
             addChild(alien)
         }
         
@@ -83,11 +83,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             alien.physicsBody = SKPhysicsBody(rectangleOf: alien.frame.size)
             alien.physicsBody?.affectedByGravity = false
             alien.physicsBody?.allowsRotation = false
-            alien.physicsBody?.isDynamic = false
+            alien.physicsBody?.isDynamic = true
             alien.zPosition = 2
             alien.name = "invader"
             alien.physicsBody = SKPhysicsBody(rectangleOf: alien.size)
-            alien.physicsBody?.affectedByGravity = false
 
             addChild(alien)
         }

@@ -110,10 +110,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     func collisionBetween(bullet: SKNode, alien: SKNode) {
             destroy(bullet: bullet, alien: alien)
+
     }
     
     func destroy(bullet: SKNode, alien: SKNode) {
         bullet.removeFromParent()
+        alien.removeFromParent()
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -168,6 +170,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
     
         bullet.physicsBody = SKPhysicsBody(rectangleOf: bullet.size)
+        bullet.physicsBody!.contactTestBitMask = bullet.physicsBody!.collisionBitMask
         bullet.physicsBody!.isDynamic = false
         bullet.physicsBody?.affectedByGravity = false
         

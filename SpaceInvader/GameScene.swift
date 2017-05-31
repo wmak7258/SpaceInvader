@@ -15,7 +15,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var fire = SKSpriteNode()
     
     var alien: SKSpriteNode!
-    var nodeCounter = 0
+    var alienCounter = 0
     
     
     var leftButton: SKSpriteNode!
@@ -56,8 +56,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         addChild(rightButton)
         
         
-    
-        
+        let moveDown = SKAction.moveBy(x: 0.0, y: -50.0, duration: 1.0)
+        let wait = SKAction.wait(forDuration: 3.0)
+        let alienAction = SKAction.sequence([moveDown,wait])
+        let alienMovement = SKAction.repeatForever(alienAction)
 
         let alienWidth = alien.size.width
         let totalAlienWidth = alienWidth * CGFloat(5)
@@ -74,6 +76,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             alien.name = "invader"
 
             addChild(alien)
+            alienCounter += 1
+            alien.run(alienMovement)
+            
         }
         
         for i in 0..<5 {
@@ -88,8 +93,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             alien.name = "invader"
         
             addChild(alien)
+            alienCounter += 1
+            alien.run(alienMovement)
         }
-
+        
+        
+        print(alienCounter)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -107,8 +116,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func collisionBetween(bullet: SKNode, alien: SKNode) {
-            destroy(bullet: bullet, alien: alien)
-
+        destroy(bullet: bullet, alien: alien)
+        if alienCounter == 0{
+            win()
+        }
     }
     
     func destroy(bullet: SKNode, alien: SKNode) {
@@ -119,6 +130,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         fire?.run(SKAction.sequence([SKAction.wait(forDuration:0.8), SKAction.fadeOut(withDuration: 1) ,SKAction.removeFromParent()]))
         bullet.removeFromParent()
         alien.removeFromParent()
+        alienCounter -= 1
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -190,5 +202,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
 
         return bullet
         
+    }
+    
+    func win(){
+        let winLabel = SKLabelNode(text: "You Win")
+        winLabel.color = UIColor.white
+        winLabel.fontSize = 40
+        winLabel.position = CGPoint(x: 375.0, y: 665.0)
+        addChild(winLabel)
     }
 }

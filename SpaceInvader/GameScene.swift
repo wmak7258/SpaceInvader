@@ -14,7 +14,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
    
     var fire = SKSpriteNode()
     
+    
     var alien: SKSpriteNode!
+    var frontAlien: [SKSpriteNode?] = []
+    var backAlien: [SKSpriteNode?] = []
     var alienCounter = 0
     
     
@@ -65,7 +68,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let totalAlienWidth = alienWidth * CGFloat(5)
         let xOffset = (frame.width - totalAlienWidth)/2
         for i in 0..<5 {
-            let alien = SKSpriteNode(imageNamed: "invader")
+            alien = SKSpriteNode(imageNamed: "invader")
             alien.size = CGSize(width: 100, height: 100)
             alien.position = CGPoint(x: xOffset + CGFloat(CGFloat(i) + 0.5) * alienWidth, y: frame.height * 0.9)
             alien.physicsBody = SKPhysicsBody(rectangleOf: alien.frame.size)
@@ -73,16 +76,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             alien.physicsBody?.allowsRotation = false
             alien.physicsBody?.isDynamic = true
             alien.zPosition = 2
-            alien.name = "invader"
+            alien.name = "invader front"
 
             addChild(alien)
+            frontAlien.append(alien)
             alienCounter += 1
             alien.run(alienMovement)
             
         }
         
         for i in 0..<5 {
-            let alien = SKSpriteNode(imageNamed: "invader")
+            alien = SKSpriteNode(imageNamed: "invader")
             alien.size = CGSize(width: 100, height: 100)
             alien.position = CGPoint(x: xOffset + CGFloat(CGFloat(i) + 0.5) * alienWidth, y: frame.height * 0.8)
             alien.physicsBody = SKPhysicsBody(rectangleOf: alien.frame.size)
@@ -90,13 +94,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             alien.physicsBody?.allowsRotation = false
             alien.physicsBody?.isDynamic = true
             alien.zPosition = 2
-            alien.name = "invader"
-        
+            alien.name = "invader back"
+            
             addChild(alien)
+            backAlien.append(alien)
             alienCounter += 1
             alien.run(alienMovement)
         }
-        
+        let loseLine = SKSpriteNode(color: UIColor.red, size: CGSize(width: 750.0, height: 10.0))
+        loseLine.position = CGPoint(x: 375.0, y: 200)
+        addChild(loseLine)
         
         print(alienCounter)
     }
@@ -120,6 +127,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         if alienCounter == 0{
             win()
         }
+       
     }
     
     func destroy(bullet: SKNode, alien: SKNode) {
@@ -131,6 +139,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         bullet.removeFromParent()
         alien.removeFromParent()
         alienCounter -= 1
+        if alien.name == "invader front" {
+            frontAlien.remove(at: <#T##Int#>)
+        }else if alien.name == "invader back" {
+            
+        }
+        
+        
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
@@ -142,7 +157,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     override func update(_ currentTime: CFTimeInterval) {
-       
+        if alien.position.y <= 205.0 + (alien.size.height / 2){
+            lose()
+        }
         let count = self["bullet"].count
         
         if count != 0{
@@ -210,5 +227,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         winLabel.fontSize = 40
         winLabel.position = CGPoint(x: 375.0, y: 665.0)
         addChild(winLabel)
+    }
+    
+    func lose(){
+        let loseLabel = SKLabelNode(text: "You Lose")
+        loseLabel.color = UIColor.white
+        loseLabel.fontSize = 40
+        loseLabel.position = CGPoint(x: 375.0, y: 665.0)
+        addChild(loseLabel)
     }
 }

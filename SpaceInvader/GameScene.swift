@@ -53,9 +53,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         fire.position = CGPoint(x: 100, y:85)
         addChild(fire)
-        leftButton.position = CGPoint(x: 575, y: 85)
+        leftButton.position = CGPoint(x: frame.size.width - 175, y: 85)
         addChild(leftButton)
-        rightButton.position = CGPoint(x: 650, y: 85)
+        rightButton.position = CGPoint(x: frame.size.width - 100, y: 85)
         addChild(rightButton)
         
         
@@ -101,8 +101,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             alienCounter += 1
             alien.run(alienMovement)
         }
-        let loseLine = SKSpriteNode(color: UIColor.red, size: CGSize(width: 750.0, height: 10.0))
-        loseLine.position = CGPoint(x: 375.0, y: 200)
+        let loseLine = SKSpriteNode(color: UIColor.red, size: CGSize(width: frame.size.width, height: 10.0))
+        loseLine.position = CGPoint(x: frame.size.width / 2.0, y: 200)
         addChild(loseLine)
         
         print(alienCounter)
@@ -140,7 +140,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         alien.removeFromParent()
         alienCounter -= 1
         if alien.name == "invader front" {
-            frontAlien.remove(at: <#T##Int#>)
+            //frontAlien.remove(at: <#T##Int#>)
         }else if alien.name == "invader back" {
             
         }

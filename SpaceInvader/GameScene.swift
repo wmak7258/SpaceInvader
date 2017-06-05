@@ -67,10 +67,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let alienWidth = alien.size.width
         let totalAlienWidth = alienWidth * CGFloat(5)
         let xOffset = (frame.width - totalAlienWidth)/2
-        for i in 0..<5 {
+        for i in 0..<9 {
             alien = SKSpriteNode(imageNamed: "invader")
             alien.size = CGSize(width: 100, height: 100)
-            alien.position = CGPoint(x: xOffset + CGFloat(CGFloat(i) + 0.5) * alienWidth, y: frame.height * 0.9)
+            alien.position = CGPoint(x: xOffset + CGFloat(CGFloat(i - 2) + 0.5) * alienWidth, y: frame.height * 0.9)
             alien.physicsBody = SKPhysicsBody(rectangleOf: alien.frame.size)
             alien.physicsBody?.affectedByGravity = false
             alien.physicsBody?.allowsRotation = false
@@ -85,10 +85,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             
         }
         
-        for i in 0..<5 {
+        for i in 0..<9 {
             alien = SKSpriteNode(imageNamed: "invader")
             alien.size = CGSize(width: 100, height: 100)
-            alien.position = CGPoint(x: xOffset + CGFloat(CGFloat(i) + 0.5) * alienWidth, y: frame.height * 0.8)
+            alien.position = CGPoint(x: xOffset + CGFloat(CGFloat(i - 2) + 0.5) * alienWidth, y: frame.height * 0.8)
             alien.physicsBody = SKPhysicsBody(rectangleOf: alien.frame.size)
             alien.physicsBody?.affectedByGravity = false
             alien.physicsBody?.allowsRotation = false
@@ -225,7 +225,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let winLabel = SKLabelNode(text: "You Win")
         winLabel.color = UIColor.white
         winLabel.fontSize = 40
-        winLabel.position = CGPoint(x: 375.0, y: 665.0)
+        winLabel.position = CGPoint(x: frame.size.width / 2, y: 665.0)
         addChild(winLabel)
     }
     

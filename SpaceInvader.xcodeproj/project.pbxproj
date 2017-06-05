@@ -202,6 +202,7 @@
 				TargetAttributes = {
 					EFFF57841ED49D12009E33AE = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = U4YAT939D4;
 						ProvisioningStyle = Automatic;
 					};
 					EFFF579E1ED49D12009E33AE = {
@@ -426,8 +427,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = U4YAT939D4;
 				INFOPLIST_FILE = SpaceInvader/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.jhhs.SpaceInvader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -439,8 +441,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = U4YAT939D4;
 				INFOPLIST_FILE = SpaceInvader/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.jhhs.SpaceInvader;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -117,6 +117,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         print(alienCounter)
     }
     
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
 
         let touch = touches.first!
@@ -195,6 +196,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                     lastBullet = shoot(node: plane, shoot: true)
                 }
                 
+            }else if objects.contains(fire) && objects.contains(leftButton){
+                if count == 0 || lastBullet.position.y >= plane.position.y + 100{
+                    lastBullet = shoot(node: plane, shoot: true)
+                }
+                let moveTOLeft = SKAction.moveBy(x: -10, y: 0, duration: 0.001)
+                plane.run(moveTOLeft)
+            }else if objects.contains(fire) && objects.contains(rightButton){
+                if count == 0 || lastBullet.position.y >= plane.position.y + 100{
+                    lastBullet = shoot(node: plane, shoot: true)
+                }
+                let moveTOLeft = SKAction.moveBy(x: 10, y: 0, duration: 0.001)
+                plane.run(moveTOLeft)
             }
         }
         else { // if no touches.

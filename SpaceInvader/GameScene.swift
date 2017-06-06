@@ -60,9 +60,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         
         let moveDown = SKAction.moveBy(x: 0.0, y: -50.0, duration: 1.0)
-        let wait = SKAction.wait(forDuration: 3.0)
-        let alienAction = SKAction.sequence([moveDown,wait])
-        let alienMovement = SKAction.repeatForever(alienAction)
+        let wait = SKAction.wait(forDuration: 1.0)
+        let moveRight = SKAction.moveBy(x: alien.size.width / 2, y: 0.0, duration: 1.0)
+        let moveLeft = SKAction.moveBy(x: -alien.size.width / 2, y: 0.0, duration: 1.0)
+        let moveDownAction = SKAction.sequence([moveDown,wait])
+        let leftRightReturnAction = SKAction.sequence([moveDownAction, moveLeft, moveDownAction, moveRight])
+        let rightLeftReturnAction = SKAction.sequence([moveDownAction, moveRight, moveDownAction, moveLeft])
+        let totalAction = SKAction.sequence([leftRightReturnAction, rightLeftReturnAction])
+        let alienMovement = SKAction.repeatForever(totalAction)
 
         let alienWidth = alien.size.width
         let totalAlienWidth = alienWidth * CGFloat(5)

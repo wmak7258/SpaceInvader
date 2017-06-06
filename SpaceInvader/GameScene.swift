@@ -75,8 +75,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         for i in 0..<9 {
             alien = SKSpriteNode(imageNamed: "invader")
             alien.size = CGSize(width: 100, height: 100)
+            
             alien.position = CGPoint(x: xOffset + CGFloat(CGFloat(i - 2) + 0.5) * alienWidth, y: frame.height * 0.9)
-            alien.physicsBody = SKPhysicsBody(rectangleOf: alien.frame.size)
+            alien.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: alien.frame.size.width - 5, height: alien.frame.size.height - 5))
+//            SKPhysicsBody(rectangleOf: alien.frame.size)
+            
+            //alien.physicsBody = SKPhysicsBody(circleOfRadius: alien.size.width / 2)
             alien.physicsBody?.affectedByGravity = false
             alien.physicsBody?.allowsRotation = false
             alien.physicsBody?.isDynamic = true

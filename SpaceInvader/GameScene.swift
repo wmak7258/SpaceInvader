@@ -264,7 +264,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         let loseLabel = SKLabelNode(text: "You Lose")
         loseLabel.color = UIColor.white
         loseLabel.fontSize = 40
-        loseLabel.position = CGPoint(x: 375.0, y: 665.0)
+        loseLabel.position = CGPoint(x: frame.size.width / 2, y: 665.0)
+        scene?.removeAllChildren()
         addChild(loseLabel)
     }
 }

@@ -59,13 +59,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         addChild(rightButton)
         
         
-        let moveDown = SKAction.moveBy(x: 0.0, y: -50.0, duration: 1.0)
+        let moveDown = SKAction.moveBy(x: 0.0, y: -100.0, duration: 1.0)
         let wait = SKAction.wait(forDuration: 1.0)
         let moveRight = SKAction.moveBy(x: alien.size.width / 2, y: 0.0, duration: 1.0)
         let moveLeft = SKAction.moveBy(x: -alien.size.width / 2, y: 0.0, duration: 1.0)
         let moveDownAction = SKAction.sequence([moveDown,wait])
-        let leftRightReturnAction = SKAction.sequence([moveDownAction, moveLeft, moveDownAction, moveRight])
-        let rightLeftReturnAction = SKAction.sequence([moveDownAction, moveRight, moveDownAction, moveLeft])
+        let leftRightReturnAction = SKAction.sequence([moveDown, moveLeft, moveDown, moveRight])
+        let rightLeftReturnAction = SKAction.sequence([moveDown, moveRight, moveDown, moveLeft])
         let totalAction = SKAction.sequence([leftRightReturnAction, rightLeftReturnAction])
         let alienMovement = SKAction.repeatForever(totalAction)
 
@@ -112,6 +112,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         }
         let loseLine = SKSpriteNode(color: UIColor.red, size: CGSize(width: frame.size.width, height: 10.0))
         loseLine.position = CGPoint(x: frame.size.width / 2.0, y: 200)
+        
         addChild(loseLine)
         
         print(alienCounter)
@@ -132,12 +133,17 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         touchingScreen = false
     }
     
-    func collisionBetween(bullet: SKNode, alien: SKNode) {
+    func collisionWithBullet(bullet: SKNode, alien: SKNode) {
         destroy(bullet: bullet, alien: alien)
         if alienCounter == 0{
             win()
         }
        
+    }
+    
+    func collisionWithLine(bullet: SKNode, alien: SKNode) {
+        lose()
+        
     }
     
     func destroy(bullet: SKNode, alien: SKNode) {
@@ -160,16 +166,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     
     func didBegin(_ contact: SKPhysicsContact) {
         if contact.bodyA.node?.name == "bullet" {
-            collisionBetween(bullet: contact.bodyA.node!, alien: contact.bodyB.node!)
+            collisionWithBullet(bullet: contact.bodyA.node!, alien: contact.bodyB.node!)
         } else if contact.bodyB.node?.name == "bullet" {
-            collisionBetween(bullet: contact.bodyB.node!, alien: contact.bodyA.node!)
+            collisionWithBullet(bullet: contact.bodyB.node!, alien: contact.bodyA.node!)
+        }
+        if contact.bodyA.node?.name == "invader" {
+            collisionWithBullet(bullet: contact.bodyA.node!, alien: contact.bodyB.node!)
+        } else if contact.bodyB.node?.name == "invader" {
+            collisionWithBullet(bullet: contact.bodyB.node!, alien: contact.bodyA.node!)
         }
     }
     
     override func update(_ currentTime: CFTimeInterval) {
-        if alien.position.y <= 205.0 + (alien.size.height / 2){
-            lose()
-        }
+        
         let count = self["bullet"].count
         
         if count != 0{
@@ -178,41 +187,39 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         }
         if touchingScreen {
             let objects = nodes(at: touchPoint)
-            if objects.contains(rightButton) && plane.position.x <= (frame.width - (plane.size.width / 2)) {
-                // move character to the right.
-                rightButton.color = UIColor.green
-                let moveTOLeft = SKAction.moveBy(x: 10, y: 0, duration: 0.001)
-                
-                plane.run(moveTOLeft)
-            }
-            else if objects.contains(leftButton) && plane.position.x >= (plane.size.width / 2) {
-                // move character to the left.
-                leftButton.color = UIColor.green
+            if (objects.contains(fire) && objects.contains(leftButton)) && plane.position.x >= (frame.width - (plane.size.width / 2)) {
+                if count == 0 || lastBullet.position.y >= plane.position.y + 100{
+                    lastBullet = shoot(node: plane, shoot: true)
+                }
                 let moveTOLeft = SKAction.moveBy(x: -10, y: 0, duration: 0.001)
                 plane.run(moveTOLeft)
+            }else if (objects.contains(fire) && objects.contains(rightButton)) && plane.position.x <= (frame.width - (plane.size.width / 2)) {
+                if count == 0 || lastBullet.position.y >= plane.position.y + 100{
+                    lastBullet = shoot(node: plane, shoot: true)
+                }
+                let moveTOLeft = SKAction.moveBy(x: 10, y: 0, duration: 0.001)
+                plane.run(moveTOLeft)
+            }else if objects.contains(rightButton) && plane.position.x <= (frame.width - (plane.size.width / 2)) {
+                    // move character to the right.
+                    rightButton.color = UIColor.green
+                    let moveTOLeft = SKAction.moveBy(x: 10, y: 0, duration: 0.001)
+                
+                    plane.run(moveTOLeft)
+            }else if objects.contains(leftButton) && plane.position.x >= (plane.size.width / 2) {
+                    // move character to the left.
+                    leftButton.color = UIColor.green
+                    let moveTOLeft = SKAction.moveBy(x: -10, y: 0, duration: 0.001)
+                    plane.run(moveTOLeft)
             }else if objects.contains(fire){
                 
-                if count == 0 || lastBullet.position.y >= plane.position.y + 100{
-                    lastBullet = shoot(node: plane, shoot: true)
-                }
-                
-            }else if objects.contains(fire) && objects.contains(leftButton){
-                if count == 0 || lastBullet.position.y >= plane.position.y + 100{
-                    lastBullet = shoot(node: plane, shoot: true)
-                }
-                let moveTOLeft = SKAction.moveBy(x: -10, y: 0, duration: 0.001)
-                plane.run(moveTOLeft)
-            }else if objects.contains(fire) && objects.contains(rightButton){
-                if count == 0 || lastBullet.position.y >= plane.position.y + 100{
-                    lastBullet = shoot(node: plane, shoot: true)
-                }
-                let moveTOLeft = SKAction.moveBy(x: 10, y: 0, duration: 0.001)
-                plane.run(moveTOLeft)
+                    if count == 0 || lastBullet.position.y >= plane.position.y + 100{
+                        lastBullet = shoot(node: plane, shoot: true)
+                    }
             }
-        }
-        else { // if no touches.
-            // move character back to middle of screen. Or just do nothing.
+            else { // if no touches.
+                // move character back to middle of screen. Or just do nothing.
            
+            }
         }
     }
     

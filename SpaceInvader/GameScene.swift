@@ -30,6 +30,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     var bulletYPoistion = 0
     var lastBullet: SKSpriteNode!
     
+    var loseLine: SKSpriteNode!
+
+    
     override func didMove(to view: SKView) {
 
         physicsWorld.contactDelegate = self
@@ -40,9 +43,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         rightButton = SKSpriteNode(imageNamed: "rightArrow")
         alien = SKSpriteNode(imageNamed: "invader")
         
-        fire.size = CGSize(width: 70, height: 70)
-        leftButton.size = CGSize(width: 60, height: 60)
-        rightButton.size = CGSize(width: 60, height: 60)
+        fire.size = CGSize(width: 210, height: 210)
+        leftButton.size = CGSize(width: 120, height: 120)
+        rightButton.size = CGSize(width: 120, height: 120)
         alien.size = CGSize(width: 100, height: 100)
       
         physicsWorld.gravity.dy = 0
@@ -53,17 +56,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         
         fire.position = CGPoint(x: 100, y:85)
         addChild(fire)
-        leftButton.position = CGPoint(x: frame.size.width - 175, y: 85)
+        leftButton.position = CGPoint(x: frame.size.width - 250, y: 85)
         addChild(leftButton)
         rightButton.position = CGPoint(x: frame.size.width - 100, y: 85)
         addChild(rightButton)
         
         
         let moveDown = SKAction.moveBy(x: 0.0, y: -100.0, duration: 1.0)
-        let wait = SKAction.wait(forDuration: 1.0)
         let moveRight = SKAction.moveBy(x: alien.size.width / 2, y: 0.0, duration: 1.0)
         let moveLeft = SKAction.moveBy(x: -alien.size.width / 2, y: 0.0, duration: 1.0)
-        let moveDownAction = SKAction.sequence([moveDown,wait])
         let leftRightReturnAction = SKAction.sequence([moveDown, moveLeft, moveDown, moveRight])
         let rightLeftReturnAction = SKAction.sequence([moveDown, moveRight, moveDown, moveLeft])
         let totalAction = SKAction.sequence([leftRightReturnAction, rightLeftReturnAction])
@@ -78,14 +79,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             
             alien.position = CGPoint(x: xOffset + CGFloat(CGFloat(i - 2) + 0.5) * alienWidth, y: frame.height * 0.9)
             alien.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: alien.frame.size.width - 5, height: alien.frame.size.height - 5))
-//            SKPhysicsBody(rectangleOf: alien.frame.size)
+            alien.physicsBody!.contactTestBitMask = alien.physicsBody!.collisionBitMask
             
             //alien.physicsBody = SKPhysicsBody(circleOfRadius: alien.size.width / 2)
             alien.physicsBody?.affectedByGravity = false
             alien.physicsBody?.allowsRotation = false
             alien.physicsBody?.isDynamic = true
             alien.zPosition = 2
-            alien.name = "invader front"
+            alien.name = "invader"
 
             addChild(alien)
             frontAlien.append(alien)
@@ -99,19 +100,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
             alien.size = CGSize(width: 100, height: 100)
             alien.position = CGPoint(x: xOffset + CGFloat(CGFloat(i - 2) + 0.5) * alienWidth, y: frame.height * 0.8)
             alien.physicsBody = SKPhysicsBody(rectangleOf: alien.frame.size)
+            alien.physicsBody!.contactTestBitMask = alien.physicsBody!.collisionBitMask
             alien.physicsBody?.affectedByGravity = false
             alien.physicsBody?.allowsRotation = false
             alien.physicsBody?.isDynamic = true
             alien.zPosition = 2
-            alien.name = "invader back"
+            alien.name = "invader"
             
             addChild(alien)
             backAlien.append(alien)
             alienCounter += 1
             alien.run(alienMovement)
         }
-        let loseLine = SKSpriteNode(color: UIColor.red, size: CGSize(width: frame.size.width, height: 10.0))
+        loseLine = SKSpriteNode(color: UIColor.red, size: CGSize(width: frame.size.width, height: 10.0))
         loseLine.position = CGPoint(x: frame.size.width / 2.0, y: 200)
+        loseLine.physicsBody = SKPhysicsBody(rectangleOf: loseLine.size)
+        loseLine.name = "lose"
         
         addChild(loseLine)
         
@@ -134,17 +138,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func collisionWithBullet(bullet: SKNode, alien: SKNode) {
-        destroy(bullet: bullet, alien: alien)
-        if alienCounter == 0{
-            win()
+        if bullet.name == "bullet"{
+            destroy(bullet: bullet, alien: alien)
+            if alienCounter == 0{
+                win()
+            }
+        }else if bullet.name == "lose"{
+            lose()
         }
-       
-    }
-    
-    func collisionWithLine(bullet: SKNode, alien: SKNode) {
-        lose()
         
     }
+    
+    
     
     func destroy(bullet: SKNode, alien: SKNode) {
         let fire = SKEmitterNode(fileNamed: "fire")
@@ -156,7 +161,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         alien.removeFromParent()
         alienCounter -= 1
         if alien.name == "invader front" {
-            //frontAlien.remove(at: <#T##Int#>)
+            
         }else if alien.name == "invader back" {
             
         }
@@ -165,16 +170,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        if contact.bodyA.node?.name == "bullet" {
-            collisionWithBullet(bullet: contact.bodyA.node!, alien: contact.bodyB.node!)
-        } else if contact.bodyB.node?.name == "bullet" {
-            collisionWithBullet(bullet: contact.bodyB.node!, alien: contact.bodyA.node!)
-        }
+        
+        
         if contact.bodyA.node?.name == "invader" {
-            collisionWithBullet(bullet: contact.bodyA.node!, alien: contact.bodyB.node!)
-        } else if contact.bodyB.node?.name == "invader" {
             collisionWithBullet(bullet: contact.bodyB.node!, alien: contact.bodyA.node!)
+        } else if contact.bodyB.node?.name == "invader" {
+            collisionWithBullet(bullet: contact.bodyA.node!, alien: contact.bodyB.node!)
         }
+        
+        
     }
     
     override func update(_ currentTime: CFTimeInterval) {
@@ -188,13 +192,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
         if touchingScreen {
             let objects = nodes(at: touchPoint)
             if (objects.contains(fire) && objects.contains(leftButton)) && plane.position.x >= (frame.width - (plane.size.width / 2)) {
-                if count == 0 || lastBullet.position.y >= plane.position.y + 100{
+                if count == 0 || lastBullet.position.y >= plane.position.y + 200{
                     lastBullet = shoot(node: plane, shoot: true)
                 }
                 let moveTOLeft = SKAction.moveBy(x: -10, y: 0, duration: 0.001)
                 plane.run(moveTOLeft)
             }else if (objects.contains(fire) && objects.contains(rightButton)) && plane.position.x <= (frame.width - (plane.size.width / 2)) {
-                if count == 0 || lastBullet.position.y >= plane.position.y + 100{
+                if count == 0 || lastBullet.position.y >= plane.position.y + 200{
                     lastBullet = shoot(node: plane, shoot: true)
                 }
                 let moveTOLeft = SKAction.moveBy(x: 10, y: 0, duration: 0.001)
@@ -212,7 +216,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
                     plane.run(moveTOLeft)
             }else if objects.contains(fire){
                 
-                    if count == 0 || lastBullet.position.y >= plane.position.y + 100{
+                    if count == 0 || lastBullet.position.y >= plane.position.y + 200{
                         lastBullet = shoot(node: plane, shoot: true)
                     }
             }
@@ -227,15 +231,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate{
 
         let bullet = SKSpriteNode(color: UIColor.orange, size: CGSize(width: 15.0, height: 50.0))
         plane.physicsBody?.isDynamic = false
-        bullet.position = plane.position
+        bullet.position = CGPoint(x: plane.position.x, y: loseLine.position.y + 30)
         bullet.zPosition = 2
         if(shoot){
             addChild(bullet)
         }
         
-    
         bullet.physicsBody = SKPhysicsBody(rectangleOf: bullet.size)
-        bullet.physicsBody!.contactTestBitMask = bullet.physicsBody!.collisionBitMask
         bullet.physicsBody!.isDynamic = false
         bullet.physicsBody?.affectedByGravity = false
         
